@@ -4,7 +4,7 @@ const addtask = document.getElementById('add-task');
 const taskList = document.getElementById('task-list');
 const cancelBtn = document.getElementById('cancel');
 const confirmBtn = document.getElementById('confirm');
-const modalPopover = document.getElementById('modal-popover');
+const modal = document.getElementById('modal');
 const sortBtn = document.getElementById('sort-btn');
 let taskEdit = null;
 
@@ -12,11 +12,16 @@ addtask.addEventListener('click', () => {
     taskEdit = null;
     taskInput.value = '';
     taskDes.value = '';
-    modalPopover.style.display = 'block';
+    modal.style.display = 'block';
 });
 
 cancelBtn.addEventListener('click', () => {
-    modalPopover.style.display = 'none';
+    modal.style.display = 'none';
+});
+modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+        modal.style.display = 'none';
+    }
 });
 
 confirmBtn.addEventListener('click', () => {
@@ -26,7 +31,7 @@ confirmBtn.addEventListener('click', () => {
         if (taskEdit) {
             taskEdit.querySelector('.task-item span').textContent = taskText;
             taskEdit.querySelector('.task-description').textContent = taskDesText;
-            modalPopover.style.display = 'none';
+            modal.style.display = 'none';
             taskEdit = null;
         } else {
             const li = document.createElement('li');
@@ -41,10 +46,11 @@ confirmBtn.addEventListener('click', () => {
                                 <img id='repair-icon' src="repair.svg" />
                                 Edit
                             </button>
-                           <button class="delete-btn flex">
+                           <button popovertarget="delete" class="delete-btn flex">
                                 <img id='trash-icon' src="trash.svg" />
                                 Delete
                             </button>
+                            
                         </div>
                     </div>
                     <span class="task-description">${taskDesText}</span>
@@ -53,7 +59,7 @@ confirmBtn.addEventListener('click', () => {
             taskList.appendChild(li);
             taskInput.value = '';
             taskDes.value = '';
-            modalPopover.style.display = 'none';
+            modal.style.display = 'none';
         }
 
     }
@@ -69,7 +75,7 @@ taskList.addEventListener('click', (e) => {
         const taskDesText = li.querySelector('.task-description').textContent;
         taskInput.value = taskText;
         taskDes.value = taskDesText;
-        modalPopover.style.display = 'block';
+        modal.style.display = 'block';
         taskEdit = li;
     }
 });

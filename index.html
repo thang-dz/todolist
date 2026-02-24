@@ -82,7 +82,7 @@
 
         </div>
     </div>
-    <div id="modal-popover" class="modal-popover">
+    <div id="modal" class="modal">
         <div class="modal-content">
             <h2>Add Task</h2>
             <div class="todo-body">
@@ -92,11 +92,21 @@
                 </div>
             </div>
             <div class="btn">
-                <button id="cancel">Cancel</button>
-                <button id="confirm">Confirm</button>
+                <button id="cancel" popovertarget="cancels" popovertargetaction="show">Cancel</button>
+                <button id="confirm" popovertarget="success" popovertargetaction="show">Confirm</button>
             </div>
         </div>
     </div>
+    <div popover id="success" class="popover">
+        <h3>Mission successful!</h3>
+        <button popovertarget="success" popovertargetaction="hide">Close</button>
+    </div>
+    <div popover id="cancels" class="popover">
+        <h3>You haven been canceled!</h3>
+        <button popovertarget="cancels" popovertargetaction="hide">Close</button>
+    </div>
+
+
 
     <script src="todo.js"></script>
 

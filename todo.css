@@ -23,7 +23,7 @@ body {
     background-color: bisque;
 }
 
-.modal-popover {
+.modal {
     display: none;
     position: fixed;
     top: 0;
@@ -225,4 +225,21 @@ ul {
     color: white;
     cursor: pointer;
 
+}
+.popover {
+   
+    padding: 16px 20px;
+    border-radius: 10px;
+    border: none;
+    background: white;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+.popover button{
+    background-color: linen;
+    border: none;
+    border-radius:8px;
+    padding: 5px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    font-weight: 500;
 }
