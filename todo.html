@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="todo.css">
+</head>
+
+<body>
+    <div class="todo">
+        <div class="todo-container">
+            <h1>TO DO LIST</h1>
+            <button id="add-task">+ Add Task</button>
+
+            <div class="todo-b">
+                <button id="sort-btn" class="flex ">
+                    <img id="sort-icon" src="sort.svg" />
+                    Sort Tasks
+                </button>
+                <ul id="task-list">
+                    <li>
+                        <div class="task">
+                            <div class="task-item">
+                                <span>Task 3</span>
+                                <div class="task-btn flex">
+                                    <button class="edit-btn flex ">
+                                        <img id='repair-icon' src="repair.svg" />
+                                        Edit
+                                    </button>
+                                    <button class="delete-btn flex ">
+                                        <img id='trash-icon' src="trash.svg" />
+                                        Delete
+                                    </button>
+                                </div>
+                            </div>
+                            <span class="task-description">This is the description of Task 1.</span>
+                            <p>12</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="task">
+                            <div class="task-item">
+                                <span>Task 2</span>
+                                <div class="task-btn flex">
+                                    <button class="edit-btn flex">
+                                        <img id='repair-icon' src="repair.svg" />
+                                        Edit
+                                    </button>
+                                    <button class="delete-btn flex">
+                                        <img id='trash-icon' src="trash.svg" />
+                                        Delete
+                                    </button>
+                                </div>
+                            </div>
+                            <span class="task-description">This is the description of Task 1.</span>
+                            <p>12</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="task">
+                            <div class="task-item">
+                                <span>Task 1</span>
+                                <div class="task-btn flex">
+                                    <button class="edit-btn flex">
+                                        <img id='repair-icon' src="repair.svg" />
+                                        Edit
+                                    </button>
+                                    <button class="delete-btn flex">
+                                        <img id='trash-icon' src="trash.svg" />
+                                        Delete
+                                    </button>
+                                </div>
+                            </div>
+                            <span class="task-description">This is the description of Task 1.</span>
+                            <p>12</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <div id="modal-popover" class="modal-popover">
+        <div class="modal-content">
+            <h2>Add Task</h2>
+            <div class="todo-body">
+                <div class="todo-inputs">
+                    <input type="text" id="task-input" placeholder="Enter a task name">
+                    <textarea id="task-des" placeholder="Enter task description"></textarea>
+                </div>
+            </div>
+            <div class="btn">
+                <button id="cancel">Cancel</button>
+                <button id="confirm">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="todo.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="todo.css">
+</head>
+
+<body>
+    <div class="todo">
+        <div class="todo-container">
+            <h1>TODO</h1>
+            <div class="todo-body">
+                <button id="add-task">Add</button>
+            </div>
+            <ul id="task-list"></ul>
+        </div>
+    </div>
+    <!-- Modal Popover -->
+    <div id="modal-popover" class="modal-popover" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.3); z-index:1000;">
+        <div class="modal-content" style="background:#fff; padding:20px; border-radius:8px; max-width:400px; margin:100px auto; box-shadow:0 2px 8px rgba(0,0,0,0.2);">
+            <h2>Add Task</h2>
+            <input type="text" id="modal-task-input" placeholder="Enter a task name" style="width:100%; margin-bottom:10px;">
+            <textarea id="modal-task-des" placeholder="Enter task description" style="width:100%; margin-bottom:10px;"></textarea>
+            <div style="text-align:right;">
+                <button id="modal-cancel">Cancel</button>
+                <button id="modal-confirm">Confirm</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        const addtask = document.getElementById('add-task');
+        const taskList = document.getElementById('task-list');
+        const modal = document.getElementById('modal-popover');
+        const modalTaskInput = document.getElementById('modal-task-input');
+        const modalTaskDes = document.getElementById('modal-task-des');
+        const modalCancel = document.getElementById('modal-cancel');
+        const modalConfirm = document.getElementById('modal-confirm');
+
+        addtask.addEventListener('click', () => {
+            modal.style.display = 'block';
+            modalTaskInput.value = '';
+            modalTaskDes.value = '';
+            modalTaskInput.focus();
+        });
+
+        modalCancel.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        modalConfirm.addEventListener('click', () => {
+            const taskText = modalTaskInput.value.trim();
+            const taskDesText = modalTaskDes.value.trim();
+            if (taskText !== '') {
+                const li = document.createElement('li');
+                const now = new Date();
+                const timeString = now.toLocaleTimeString();
+                li.innerHTML = `
+                <div class='task'>
+                    <div class="task-item">
+                        <span>${taskText}</span>
+                        <div class="task-btn"> 
+                            <button class="edit-btn">Edit</button>                       
+                            <button class="delete-btn">Delete</button>
+                        </div>
+                    </div>
+                    <span class="task-description">${taskDesText}</span>
+                    <p>${timeString}</p>
+                </div>
+                `;
+                taskList.appendChild(li);
+                modal.style.display = 'none';
+            }
+        });
+
+        taskList.addEventListener('click', (e) => {
+            if (e.target.classList.contains('delete-btn')) {
+                const li = e.target.closest('li');
+                taskList.removeChild(li);
+            }
+        });
+    </script>
+</body>
+
+</html>
