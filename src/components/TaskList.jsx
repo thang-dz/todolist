@@ -8,6 +8,11 @@ const TaskList = ({
   onToggle,
   onDelete,
   onUpdate,
+  onConfirm,
+  confirm,
+  setConfirm,
+  delCon,
+  setDelCon
 }) => {
   const filteredTasks = useMemo(() => {
     let result = [...tasks];
@@ -33,7 +38,7 @@ const TaskList = ({
   }, [tasks, filter, sortBy]);
 
   return (
-    <div className="space-y-3 w-full max-w-xl mt-20 bg-yellow-100 rounded-lg p-4">
+    <div className="space-y-3 w-full max-w-xl mt-10 sm:mt-20 bg-yellow-100 rounded-lg p-4">
       {filteredTasks.length === 0 ? (
         <p className="text-muted-foreground text-sm">
           No tasks found.
@@ -43,9 +48,14 @@ const TaskList = ({
           <TaskCard
             key={task.id}
             task={task}
+            confirm={confirm}
             onToggle={onToggle}
             onDelete={onDelete}
             onUpdate={onUpdate}
+            onConfirm={onConfirm}
+            setConfirm={setConfirm}
+            delCon={delCon}
+            setDelCon={setDelCon}
           />
         ))
       )}

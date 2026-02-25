@@ -1,4 +1,4 @@
-import { useState,useCallback } from "react";
+import { useState, useCallback } from "react";
 
 import TaskList from "@/components/TaskList";
 import Header from "@/components/Header";
@@ -24,13 +24,12 @@ const HomePage = () => {
       title: "Deploy Project",
       status: "active",
       createdAt: new Date(),
-
     },
   ]);
   const [filter, setFilter] = useState("all");
-  const [isopen, setIsOpen] = useState(false);
-  const [sortBy, setSortBy] = useState("newest");
-
+  const [confirm, setConfirm] = useState(false);
+  const [deleteConfirm, setDeleteConfirm] =useState(false);
+  const [sortBy, setSortBy] = useState("Sort");
 
   const handleAddTask = (title) => {
     const newTask = {
@@ -43,59 +42,79 @@ const HomePage = () => {
     setTasks((prev) => [...prev, newTask]);
   };
   const comTasksCount = tasks.filter(
-    (task) => task.status === "completed"
+    (task) => task.status === "completed",
   ).length;
 
-  const actTasksCount = tasks.filter(
-    (task) => task.status === "active"
-  ).length;
+  const actTasksCount = tasks.filter((task) => task.status === "active").length;
 
   const handleToggle = (id) => {
+    const task = tasks.find((t) => t.id === id);
+    if (task.status === "completed") {
+      setConfirm(id); 
+    } else {
+      setTasks((prev) =>
+        prev.map((task) =>
+          task.id === id
+            ? {
+                ...task,
+                status: task.status === "completed" ? "active" : "completed",
+                completedAt: task.status === "completed" ? null : new Date(),
+              }
+            : task,
+        ),
+      );
+    }
+  };
+
+  const confirmToggle = (id) => {
     setTasks((prev) =>
       prev.map((task) =>
         task.id === id
           ? {
-            ...task,
-            status:
-              task.status === "completed"
-                ? "active"
-                : "completed",
-            completedAt:
-              task.status === "completed"
-                ? null
-                : new Date(),
-          }
-          : task
-      )
+              ...task,
+              status: "active",
+              completedAt: null,
+            }
+          : task,
+      ),
     );
+    setConfirm(null);
   };
 
   const handleDelete = (id) => {
     setTasks((prev) => prev.filter((task) => task.id !== id));
   };
   const handleTaskChanged = useCallback((id, updatedTask) => {
-  setTasks((prev) =>
-    prev.map((task) =>
-      task.id === id ? { ...task, ...updatedTask } : task
-    )
-  );
-}, []);
+    setTasks((prev) =>
+      prev.map((task) => (task.id === id ? { ...task, ...updatedTask } : task)),
+    );
+  }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-600 text-white overflow-hidden flex items-center justify-start flex-col p-6 gap-6">
+    <div className="min-h-screen bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-600 text-white overflow-hidden flex items-center justify-start flex-col p-6 gap-2 sm:gap-6">
       <Header />
       <AddTask onAddTask={handleAddTask} />
-      <FilterTask filter={filter} setFilter={setFilter} sortBy={sortBy} setSortBy={setSortBy} comTasksCount={comTasksCount} actTasksCount={actTasksCount} />
+      <FilterTask
+        filter={filter}
+        setFilter={setFilter}
+        sortBy={sortBy}
+        setSortBy={setSortBy}
+        comTasksCount={comTasksCount}
+        actTasksCount={actTasksCount}
+      />
       <TaskList
-        tasks={tasks} 
+        tasks={tasks}
         filter={filter}
         onToggle={handleToggle}
         onDelete={handleDelete}
         sortBy={sortBy}
         onUpdate={handleTaskChanged}
+        onConfirm={confirmToggle}
+        confirm={confirm}
+        setConfirm={setConfirm}
+        delCon={deleteConfirm}
+        setDelCon={setDeleteConfirm}
       />
-
-
     </div>
   );
 };

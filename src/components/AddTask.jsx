@@ -20,11 +20,11 @@ const AddTask = ({ onAddTask }) => {
   };
 
   return (
-    <Card className="p-6 border-0 bg-white rounded-lg shadow-lg border-2 border-amber-600 mt-20">
+    <Card className="p-2 sm:p-6 border-0 bg-white rounded-lg shadow-lg border-2 border-amber-600 mt-8 sm:mt-20">
       <div className="flex flex-col sm:flex-row items-center gap-3">
         <Input
           placeholder="Enter a new task"
-          className="w-80"
+          className=" w-80"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           onKeyDown={handleKeyDown}
@@ -32,9 +32,9 @@ const AddTask = ({ onAddTask }) => {
 
         <Button
           onClick={handleSubmit}
-          className="ml-4 text-base bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-600 text-white hover:from-yellow-500 hover:via-amber-600 hover:to-yellow-700 transition-colors duration-200 flex items-center"
+          className="ml-4 text-sm sm:text-base bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-600 text-white hover:from-yellow-500 hover:via-amber-600 hover:to-yellow-700 transition-colors duration-200 flex items-center"
         >
-          <Plus className="size-5 mr-2" />
+          <Plus className=" size-4 sm:size-5 " />
           Add Task
         </Button>
       </div>
