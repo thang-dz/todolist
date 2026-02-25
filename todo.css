@@ -144,9 +144,10 @@ body {
   padding: 20px;
   background-color: snow;
   width: 600px;
-  height: auto;
+  overflow-y: auto;
   border-radius: 16px;
   min-height: 300px;
+  max-height: 500px;
 }
 
 .task {
