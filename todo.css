@@ -147,7 +147,7 @@ body {
   overflow-y: auto;
   border-radius: 16px;
   min-height: 300px;
-  max-height: 500px;
+  max-height: 450px;
 }
 
 .task {
