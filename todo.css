@@ -169,8 +169,8 @@ ul {
 }
 
 .task-item span {
-  font-size: 14px;
-  font-weight: 500;
+    font-size: 18px;
+    font-weight: 700;
 }
 
 .delete-btn {
@@ -214,6 +214,9 @@ ul {
   text-align: right;
 }
 
+.task span {
+    color: #663300;
+}
 
 .task-description {
   padding: 0 20px 10px 20px;
@@ -257,146 +260,10 @@ ul {
     opacity 0.3s ease,
     translate 0.3s ease;
 }
-.popover h3 {
-  margin: 0px;
-  font-size: 14px;
-  font-weight: 600;
-  font-family: "Arial", sans-serif;
-}
-.close-btn {
-  padding: 5px 10px;
-  font-size: 14px;
-  border: none;
-  cursor: pointer;
-  border-radius: 8px;
-  margin-top: 10px;
-}
-.close-btn:hover {
-  background-color: #c0c0c0;
-  color: white;
-}
-
-.popover:popover-open {
-  opacity: 1;
-  translate: 0 0;
-}
-
-@starting-style {
-  .popover:popover-open {
-    opacity: 0;
-    translate: 0 10px;
-  }
-}
-#delete-ok {
-  padding: 5px 10px;
-  font-size: 14px;
-  border: none;
-  border-radius: 8px;
-  background-color: brown;
-  color: white;
-  cursor: pointer;
-}
-#delete-ok:hover {
-  background-color: #e33539;
-}
-
-#delete-cancel {
-  padding: 5px 10px;
-  font-size: 14px;
-  border: none;
-  border-radius: 8px;
-  background-color: #996600;
-  color: white;
-  cursor: pointer;
-  margin-right: 10px;
-}
-#delete-cancel:hover {
-  background-color: #663300;
-}
-
-@media (max-width: 768px) {
-  .desktop {
-    display: none;
-  }
-  .todo-container {
-    width: 95vw;
-  }
-
-  .todo-container h1 {
-    font-size: 30px;
-  }
-
-  #task-list {
-    width: 85vw;
-    min-height: 200px;
-    padding: 12px;
-  }
-
-  .task {
-    width: 100%;
-  }
-
-  .task-item {
-    gap: 8px;
-    padding: 10px 12px;
-  }
-  .task-item span {
-    font-size: 14px;
-  }
-  .task-description {
-    font-size: 12px;
-  }
-
-  .popover h3 {
-    font-size: 12px;
-  }
-  .close-btn {
-    font-size: 12px;
-  }
-
-  .task-btn {
-    justify-content: flex-end;
-    align-items: center;
-  }
-
-  .todo-b {
-    padding-top: 20px;
-    width: 90vw;
-    align-items: stretch;
-  }
-
-
-  .modal-content {
-    margin: 80px 16px;
-    padding: 16px 20px;
-    max-width: 100%;
-    box-sizing: border-box;
-    font-size: 14px;
-  }
-
-  .popover {
-    right: 12px;
-    bottom: 12px;
-    max-width: calc(100vw - 24px);
-    box-sizing: border-box;
-  }
-
-  #add-task {
-    width: 90vw;
-    margin-top: 16px;
-    font-size: 14px;
-  }
-
-  #sort-btn {
-    width: 100%;
-    justify-content: center;
-    margin-bottom: 10px;
-    font-size: 12px;
-    margin: 0;
-  }
-  #confirm,
-  #cancel {
-    font-size: 14px;
+.popover button{
+    background-color: linen;
+    border: none;
+    border-radius:8px;
     padding: 5px 10px;
     margin-right: 5px;
   }

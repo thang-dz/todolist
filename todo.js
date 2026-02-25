@@ -112,4 +112,4 @@ function sortTasks() {
   taskList.innerHTML = "";
   items.forEach((item) => taskList.appendChild(item));
 }
-sortBtn.addEventListener("click", sortTasks);
+sortBtn.addEventListener('click', sortTasks);
